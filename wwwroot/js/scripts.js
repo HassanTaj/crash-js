@@ -242,7 +242,7 @@ let currentTime = 0;
 // });
 
 console.clear();
-ConsoleHelper.Log('Meri Kahani', ConsoleColors.Green);
+// ConsoleHelper.Log('Meri Kahani', ConsoleColors.Green);
 let p1 = new Promise((resolve, reject) => {
 	setTimeout(() => {
 		currentTime += tenseconds;
@@ -328,49 +328,61 @@ class Woman extends Person {
 		return new Promise((res, rej) => {
 			if (person.incomeInDigits >= 6 && person.hasCity === true && person.hasCivic === true) {
 				res(`${person.name} Baba kehte hain use coffee pe bulao`);
-
 			} else if (person.incomeInDigits >= 6 && person.hasCivic == true) {
 				res(`${person.name} Man Sb Ko Mana Lugi`);
-			}
-			else if (person.incomeInDigits >= 5 && person.hasCity == true) {
+			} else if (person.incomeInDigits >= 5 && person.hasCity == true) {
 				res(`${person.name} Man try kru gi`);
 			} else {
 				rej(`${person.name} Baba nahi manain ge`);
 			}
-		})
+		});
 	}
 }
-
 let available_men = [
-	new Person('Kashif', 25, false, false, 5),
-	new Person('Ahmed', 25, true, false, 5),
+	new Person('Kashif', 25, false, false, 5), new Person('Ahmed', 25, true, false, 5),
 	new Person('Usman', 25, true, true, 7)
 ];
-
 let ungrateful_bitch = new Woman('Keren', 25, false, false, 5);
-
-for (const man of available_men) {
-	ConsoleHelper.Log(`${man.name}`,'white')
-	ungrateful_bitch.decideToGetMarried(man)
-	.then((res) => {
-		ConsoleHelper.Log(`${res}`,'green')
-	})
-	.catch((reason)=>{
-		ConsoleHelper.Log(`${reason}`,'red')
-	});
-}
-
 //---------------------------------------------- async promises
-async function validateMen() {
+
+// for (const man of available_men) {
+// 	ConsoleHelper.Log(`${man.name}`,'white')
+// 	ungrateful_bitch.decideToGetMarried(man)
+// 	.then((res) => {
+// 		ConsoleHelper.Log(`${res}`,'green')
+// 	})
+// 	.catch((reason)=>{
+// 		ConsoleHelper.Log(`${reason}`,'red')
+// 	});
+// }
+
+
+//---------------------------------------------- async function
+// async function validateMen() {
+// 	for (const man of available_men) {
+// 		try {
+// 			ConsoleHelper.Log(`${man.name}, has ${man.incomeInDigits} digit income, owns 
+// 			${man.hasCity && man.hasCivic ? 'Honda City & Civic' : man.hasCity ? 
+// 			'Honda City' : man.hasCivic ? 'Honda Civic' : 'no car'}`, 'white')
+// 			ConsoleHelper.Log(`${await ungrateful_bitch.decideToGetMarried(man)} `, 'greenyellow')
+// 		} catch (error) { ConsoleHelper.Log(`${error} `, 'red') }
+// 	}
+// }
+// validateMen();
+
+//---------------------------------------------- self invoked async function
+
+(async function validateMen() {
 	for (const man of available_men) {
 		try {
-			ConsoleHelper.Log(`${man.name}`, 'white')
-			let res = await ungrateful_bitch.decideToGetMarried(man);
-			ConsoleHelper.Log(`${res}`, 'green')
-		} catch (error) {
-			ConsoleHelper.Log(`${error}`, 'red')
-		}
+			ConsoleHelper.Log(`${man.name}, has ${man.incomeInDigits} digit income, owns 
+			${man.hasCity && man.hasCivic ? 'Honda City & Civic' : man.hasCity ?
+					'Honda City' : man.hasCivic ? 'Honda Civic' : 'no car'}`, 'white')
+			ConsoleHelper.Log(`${await ungrateful_bitch.decideToGetMarried(man)} `, 'greenyellow')
+		} catch (error) { ConsoleHelper.Log(`${error} `, 'red') }
 	}
-}
+})();
 
-validateMen();
+
+
+
