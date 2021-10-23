@@ -349,16 +349,16 @@ let available_men = [
 
 let ungrateful_bitch = new Woman('Keren', 25, false, false, 5);
 
-// for (const man of available_men) {
-// 	ConsoleHelper.Log(`${man.name}`,'white')
-// 	ungreatful_bitch.decideToGetMarried(man)
-// 	.then((res) => {
-// 		ConsoleHelper.Log(`${res}`,'green')
-// 	})
-// 	.catch((reason)=>{
-// 		ConsoleHelper.Log(`${reason}`,'red')
-// 	});
-// }
+for (const man of available_men) {
+	ConsoleHelper.Log(`${man.name}`,'white')
+	ungrateful_bitch.decideToGetMarried(man)
+	.then((res) => {
+		ConsoleHelper.Log(`${res}`,'green')
+	})
+	.catch((reason)=>{
+		ConsoleHelper.Log(`${reason}`,'red')
+	});
+}
 
 //---------------------------------------------- async promises
 async function validateMen() {
