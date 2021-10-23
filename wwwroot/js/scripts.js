@@ -347,7 +347,7 @@ let available_men = [
 	new Person('Usman', 25, true, true, 7)
 ];
 
-let ungreatful_bitch = new Woman('Keren', 25, false, false, 5);
+let ungrateful_bitch = new Woman('Keren', 25, false, false, 5);
 
 // for (const man of available_men) {
 // 	ConsoleHelper.Log(`${man.name}`,'white')
@@ -365,7 +365,7 @@ async function validateMen() {
 	for (const man of available_men) {
 		try {
 			ConsoleHelper.Log(`${man.name}`, 'white')
-			let res = await ungreatful_bitch.decideToGetMarried(man);
+			let res = await ungrateful_bitch.decideToGetMarried(man);
 			ConsoleHelper.Log(`${res}`, 'green')
 		} catch (error) {
 			ConsoleHelper.Log(`${error}`, 'red')
